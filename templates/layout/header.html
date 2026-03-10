@@ -153,3 +153,11 @@
         </div>
     </div><!-- End .header-bottom -->
 </header>
+
+{% if messages %}
+    <div style="margin-top: 20px;" class="alert alert-info" role="alert">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}

@@ -6,8 +6,8 @@ def cart(request):
 def checkout(request):
     return render(request, 'products/checkout.html')
 
-def product_detail(request):
-    return render(request, 'products/product-detail.html')
+def product_detail(request, pk):
+    return render(request, 'products/product-sidebar.html')
 
 def product(request):
     return render(request, 'products/product-list.html')

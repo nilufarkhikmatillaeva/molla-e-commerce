@@ -1,13 +1,11 @@
 from django.db import models
 
-
 class BaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         abstract = True
-
 
 # class Staff(models.Model):
 #     full_name = models.CharField(max_length=128)
@@ -22,18 +20,20 @@ class BaseModel(models.Model):
 #     def __str__(self):
 #         return self.full_name
 
-    class Meta:
-        db_table = 'staff'
-        verbose_name = 'staff'
-        verbose_name_plural = 'staff'
+    # class Meta:
+    #     db_table = 'staff'
+    #     verbose_name = 'staff'
+    #     verbose_name_plural = 'staff'
 
 class Contact(BaseModel):
     full_name = models.CharField(max_length=128)
     email = models.EmailField()
+    phone = models.CharField(max_length=13, blank=True)
     subject = models.CharField(max_length=255)
     message = models.TextField()
 
     is_read = models.BooleanField(default=False)
+
 
     def __str__(self):
         return self.full_name

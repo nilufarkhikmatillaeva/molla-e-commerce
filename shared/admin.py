@@ -17,7 +17,7 @@ from modeltranslation.admin import TranslationAdmin
 class ContactAdmin(admin.ModelAdmin):
     list_display = ['id', 'full_name', 'email', 'subject', 'message']
     search_fields = ['full_name', 'email', 'subject']
-    list_filter = ['created_at', 'updated_at', 'is_read']
+    list_filter = ['is_read']
 
 
 class MyTranslationOption(TranslationAdmin):
