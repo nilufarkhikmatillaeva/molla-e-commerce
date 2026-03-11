@@ -23,7 +23,11 @@
                     <li>
                         <a href="#">Links</a>
                         <ul>
-                            <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
+                            {% if request.user.is_authenticated%}
+                                <li><a href="{% url 'users:logout' %}"><i class="icon-user"></i>Logout</a></li>
+                            {% else %}
+                                <li><a href="{% url 'users:login' %}"><i class="icon-user"></i>Login</a></li>
+                            {% endif %}
                         </ul>
                     </li>
                 </ul>
@@ -122,19 +126,19 @@
             <div class="header-left">
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">
-                        <li {% if request.path == '/' %}class="active"{% endif %}>
+                        <li class="{% if request.path == '/' %}active{% endif %}">
                             <a href="{% url 'shared:home' %}">Home</a>
                         </li>
-                        <li {% if 'products' in request.path %}class="active"{% endif %}>
+                        <li class="{% if 'products' in request.path %}active{% endif %}">
                             <a href="{% url 'products:list' %}">Products</a>
                         </li>
-                        <li {% if 'blog' in request.path %}class="active"{% endif %}>
+                        <li class="{% if 'blog' in request.path %}active{% endif %}">
                             <a href="{% url 'blogs:list' %}">Blog</a>
                         </li>
-                        <li {% if 'about' in request.path %}class="active"{% endif %}>
+                        <li class="{% if 'about' in request.path %}active{% endif %}">
                             <a href="{% url 'shared:about' %}">About</a>
                         </li>
-                        <li {% if 'contact' in request.path %}class="active"{% endif %}>
+                        <li class="{% if 'contact' in request.path %}active{% endif %}">
                             <a href="{% url 'shared:contact' %}">Contact</a>
                         </li>
                     </ul>
